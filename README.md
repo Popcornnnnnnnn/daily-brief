@@ -2,6 +2,8 @@
 
 > An open-source, zero-dependency news acquisition engine, editorial contract (**SpecPack v0.2**), and Swiss broadsheet publication for daily AI, security, and open-source developer tools.
 
+**Live site:** [popcornnn.xyz](https://popcornnn.xyz) · [Archive](https://popcornnn.xyz/archive/) · [RSS](https://popcornnn.xyz/rss.xml) · [JSON Feed](https://popcornnn.xyz/feed.json) · [llms.txt](https://popcornnn.xyz/llms.txt)
+
 Most AI brief tools break in the same predictable ways: they trust `sitemap.xml` `<lastmod>` dates, silently overflow context when a repo has 400 commits, mistake feed timeouts for quiet news days, or overfit to a single thumbs-up. **Daily Brief** packages the boring engineering guardrails that fix those failures alongside the editorial website where the finished issues live.
 
 ```mermaid
@@ -52,11 +54,13 @@ pnpm --dir site build
 
 ### 3. Deploy to Cloudflare Pages
 
-1. Connect `Popcornnnnnnnn/daily-brief` in **Cloudflare Dashboard → Workers & Pages → Create → Pages → Connect to Git**.
+1. Connect `Popcornnnnnnnn/daily-brief` in **Cloudflare Dashboard → Workers & Pages → Create application → Pages → Import an existing Git repository**.
 2. Configure the build settings:
    - **Production branch:** `main`
-   - **Build command:** `pnpm --dir site install --frozen-lockfile && pnpm --dir site build`
-   - **Build output directory:** `site/dist`
+   - **Root directory:** `site`
+   - **Build command:** `pnpm build`
+   - **Build output directory:** `dist`
+   - **Environment variables:** `NODE_VERSION=22`, `PNPM_VERSION=12`, `SITE_URL=https://<your-domain>`
 3. Add your custom domain in **Custom domains** — Cloudflare automatically provisions DNS + TLS and serves `_headers` cache/security rules.
 
 ### 4. Run Your Own Collector
