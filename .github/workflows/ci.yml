@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Run zero-tolerance privacy gate
+        run: python3 publisher/privacy_gate.py .
+
+      - name: Set up Node and pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install site dependencies
+        run: pnpm --dir site install --frozen-lockfile
+
+      - name: Build static editorial site
+        run: pnpm --dir site build

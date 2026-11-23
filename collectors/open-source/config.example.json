@@ -1,0 +1,57 @@
+{
+  "lookback_hours": 168,
+  "export_hours": 72,
+  "request_timeout_seconds": 25,
+  "sources": [
+    {
+      "id": "github-trending-daily",
+      "name": "GitHub Trending Daily",
+      "family": "trending",
+      "type": "trending",
+      "since": "daily",
+      "url": "https://github.com/trending?since=daily"
+    },
+    {
+      "id": "github-trending-weekly",
+      "name": "GitHub Trending Weekly",
+      "family": "trending",
+      "type": "trending",
+      "since": "weekly",
+      "url": "https://github.com/trending?since=weekly"
+    },
+    {
+      "id": "new-ai-agent-repositories",
+      "name": "New AI Agent Repositories",
+      "family": "new-repositories",
+      "type": "repo_search",
+      "query": "topic:ai-agent created:>={since} stars:>=25"
+    },
+    {
+      "id": "new-repositories",
+      "name": "New High-Signal Repositories",
+      "family": "new-repositories",
+      "type": "repo_search",
+      "query": "created:>={since} stars:>=100"
+    },
+    {
+      "id": "product-hunt",
+      "name": "Product Hunt",
+      "family": "product-discovery",
+      "type": "product_hunt",
+      "url": "https://www.producthunt.com/feed"
+    },
+    {
+      "id": "github-advisories",
+      "name": "GitHub Security Advisories",
+      "family": "security",
+      "type": "advisories"
+    },
+    {
+      "id": "watched-example-cli",
+      "name": "Watched Repository Example",
+      "family": "watched-updates",
+      "type": "watched_repo",
+      "repo": "astral-sh/uv"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EditionView from '../components/EditionView.astro';
+import { formatIssueNo, formatShortDate, getAllEditionsSorted } from '../lib/editions';
+
+const editions = await getAllEditionsSorted();
+const latest = editions[0];
+const older = editions[1]
+  ? {
+      date: editions[1].data.date,
+      issue_number: editions[1].data.issue_number,
+      title: editions[1].data.title,
+    }
+  : null;
+const recentLedger = editions.slice(1, 11);
+---
+
+<BaseLayout
+  title={`Daily Brief — ${latest.data.title}`}
+  description={latest.data.summary}
+  canonicalPath="/"
+  currentPage="home"
+  issueDate={latest.data.date}
+>
+  <EditionView edition={latest} prevIssue={older} nextIssue={null} isFrontPage={true} />
+
+  <!-- Recent Editions Ledger on Front Page -->
+  <section
+    aria-labelledby="recent-ledger-heading"
+    class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 pt-10 mt-6 border-t-2 border-[var(--ink)] reveal-card"
+  >
+    <div class="flex flex-wrap items-baseline justify-between gap-4 pb-4 border-b border-[var(--rule)]">
+      <div>
+        <div class="font-mono-telemetry text-[10px] uppercase tracking-[0.12em] text-[var(--vermilion)] font-semibold mb-1">
+          Back Issues Ledger
+        </div>
+        <h2 id="recent-ledger-heading" class="font-serif-display text-3xl font-bold tracking-tight text-[var(--ink)]">
+          Recent Editions
+        </h2>
+      </div>
+      <a
+        href="/archive/"
+        class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--ink)] hover:bg-[var(--vermilion)] text-[var(--sheet)] font-mono-telemetry text-xs uppercase tracking-wider rounded-[2px] no-underline transition-colors"
+      >
+        <span>Browse All {editions.length} Issues →</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 divide-y md:divide-y-0">
+      {recentLedger.map((entry) => (
+        <a
+          href={`/issues/${entry.data.date}/`}
+          class="group block py-4 border-b border-[var(--rule)] no-underline hover:bg-[var(--tint)] px-3 -mx-3 rounded-[3px] transition-colors"
+        >
+          <div class="flex items-center justify-between gap-2 font-mono-telemetry text-[11px] mb-1.5">
+            <div class="flex items-center gap-2">
+              <span class="font-semibold text-[var(--vermilion)]">{formatIssueNo(entry.data.issue_number)}</span>
+              <span class="text-[var(--rule)]">·</span>
+              <span class="text-[var(--ink-muted)]">{formatShortDate(entry.data.date)}</span>
+            </div>
+            <span class="text-[var(--ink-muted)]">{entry.data.story_count} stories</span>
+          </div>
+          <h3 class="font-serif-display text-lg font-semibold leading-snug text-[var(--ink)] group-hover:text-[var(--vermilion)] transition-colors">
+            {entry.data.title}
+          </h3>
+          <p class="text-[0.84rem] text-[var(--ink-secondary)] line-clamp-2 mt-1 leading-relaxed">
+            {entry.data.summary}
+          </p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

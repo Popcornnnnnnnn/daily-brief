@@ -1,0 +1,10 @@
+name: daily-brief
+format_version: "0.2"
+version: 1.0.0
+description: Reproducible, honest-date AI and developer news pipeline with commit-pinned lossless partitions, immutable editorial receipts, holdout-gated feedback, and an allowlist-only public publication boundary.
+regenerability:
+  budget_days: 2
+  budget_conversations: 30
+  budget_tokens: 30000000
+  measured: []
+license: MIT

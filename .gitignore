@@ -1,0 +1,32 @@
+# Python & local collector runtime state
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite
+*.sqlite-*
+*.db
+*.lock
+.pytest_cache/
+
+# Collector private configs, SQLite, raw gz payloads & bridge checkouts
+collectors/*/config.json
+collectors/*/state/
+collectors/*/exports/
+collectors/*/bridge-repo/
+collectors/github-bridge.lock
+
+# Publisher private runtime configs
+publisher/config.json
+publisher/*.json
+!publisher/*.example.json
+
+# Web site build outputs & dependencies
+site/node_modules/
+site/dist/
+site/.astro/
+
+# Secrets & OS files
+.env
+.env.*
+.DS_Store
+*.bak-*

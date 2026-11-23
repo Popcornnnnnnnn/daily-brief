@@ -1,0 +1,11 @@
+{
+  "notion_token_file": "~/.config/notion-trash/token",
+  "notion_database_id": "00000000-0000-0000-0000-000000000000",
+  "receipts_repo": "",
+  "repo_path": ".",
+  "editions_dir": "editions",
+  "public_editions_dir": "site/public/editions",
+  "media_dir": "site/public/media",
+  "llms_txt_path": "site/public/llms.txt",
+  "site_base_url": "https://example.com"
+}

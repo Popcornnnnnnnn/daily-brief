@@ -1,0 +1,245 @@
+---
+import '../styles/global.css';
+import CommandSearch from '../components/CommandSearch';
+import MediaLightbox from '../components/MediaLightbox';
+import { getAllEditionsSorted, toSearchItem } from '../lib/editions';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  currentPage?: 'home' | 'archive' | 'how-it-works' | 'issue';
+  issueDate?: string;
+}
+
+const {
+  title = 'Daily Brief — AI, Security & Open-Source Developer Wire',
+  description = 'A reproducible daily briefing covering frontier AI, engineering postmortems, security advisories, and open-source developer tools — backed by commit-pinned inputs and verified receipts.',
+  canonicalPath = '/',
+  currentPage = 'home',
+  issueDate,
+} = Astro.props;
+
+const allEditions = await getAllEditionsSorted();
+const searchItems = allEditions.map(toSearchItem);
+const latestDate = allEditions[0]?.data.date ?? '';
+const canonicalUrl = new URL(canonicalPath, Astro.site || 'https://daily-brief.pages.dev').toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Daily Brief RSS" href="/rss.xml" />
+    <link rel="alternate" type="application/feed+json" title="Daily Brief JSON Feed" href="/feed.json" />
+    <meta property="og:type" content={issueDate ? 'article' : 'website'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body data-current-issue={issueDate || ''}>
+    <div class="paper-grain" aria-hidden="true"></div>
+    <div id="reading-progress" aria-hidden="true"></div>
+
+    <!-- Top Broadsheet Utility Header -->
+    <header class="sticky top-0 z-40 bg-[var(--paper)]/95 backdrop-blur-sm border-b border-[var(--rule)]">
+      <div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 h-14 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3 min-w-0">
+          <a
+            href="/"
+            class="inline-flex items-center gap-2.5 no-underline text-[var(--ink)] hover:text-[var(--vermilion)] transition-colors"
+          >
+            <span class="w-2 h-2 rounded-full bg-[var(--vermilion)] shrink-0" aria-hidden="true"></span>
+            <span class="font-serif-display font-bold text-lg tracking-tight">Daily Brief</span>
+          </a>
+          <span class="hidden md:inline-block text-[var(--rule)]" aria-hidden="true">|</span>
+          <span class="hidden md:inline-block font-mono-telemetry text-[11px] uppercase tracking-[0.08em] text-[var(--ink-muted)] truncate">
+            04:00 CST · {allEditions.length} Editions
+          </span>
+        </div>
+
+        <nav aria-label="Primary navigation" class="flex items-center gap-1 sm:gap-2">
+          <a
+            href="/"
+            class={`px-2.5 py-1.5 text-xs font-medium rounded-[2px] no-underline transition-colors ${
+              currentPage === 'home'
+                ? 'text-[var(--vermilion)] font-semibold'
+                : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
+            }`}
+          >
+            Latest
+          </a>
+          <a
+            href="/archive/"
+            class={`px-2.5 py-1.5 text-xs font-medium rounded-[2px] no-underline transition-colors ${
+              currentPage === 'archive'
+                ? 'text-[var(--vermilion)] font-semibold'
+                : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
+            }`}
+          >
+            Archive
+          </a>
+          <a
+            href="/how-it-works/"
+            class={`hidden sm:inline-block px-2.5 py-1.5 text-xs font-medium rounded-[2px] no-underline transition-colors ${
+              currentPage === 'how-it-works'
+                ? 'text-[var(--vermilion)] font-semibold'
+                : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
+            }`}
+          >
+            How It Works
+          </a>
+
+          <button
+            type="button"
+            data-open-search
+            class="inline-flex items-center gap-2 ml-1 px-2.5 py-1.5 text-xs bg-[var(--sheet)] hover:bg-[var(--tint)] border border-[var(--rule)] hover:border-[var(--ink)] rounded-[3px] text-[var(--ink-secondary)] transition-colors cursor-pointer"
+            aria-label="Open archive search"
+          >
+            <span class="font-mono-telemetry text-[11px]">Search</span>
+            <kbd class="hidden sm:inline-block font-mono-telemetry text-[10px] px-1 py-0.2 bg-[var(--tint)] border border-[var(--rule)] rounded-[2px] text-[var(--ink-muted)]">
+              ⌘K
+            </kbd>
+          </button>
+
+          <a
+            href="/rss.xml"
+            title="RSS 2.0 Feed"
+            class="hidden md:inline-block px-2 py-1.5 font-mono-telemetry text-[11px] uppercase tracking-wider text-[var(--ink-muted)] hover:text-[var(--vermilion)] no-underline"
+          >
+            RSS
+          </a>
+          <a
+            href="https://github.com/Popcornnnnnnnn/daily-brief"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden sm:inline-block px-2.5 py-1.5 font-mono-telemetry text-[11px] uppercase tracking-wider bg-[var(--ink)] hover:bg-[var(--vermilion)] text-[var(--sheet)] rounded-[2px] no-underline transition-colors"
+          >
+            GitHub ↗
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Editorial Broadsheet Colophon Footer -->
+    <footer class="mt-20 border-t-2 border-[var(--ink)] bg-[var(--sheet)]">
+      <div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+          <div class="md:col-span-6 space-y-3">
+            <div class="font-serif-display text-2xl font-bold tracking-tight text-[var(--ink)]">
+              Daily Brief
+            </div>
+            <p class="text-sm text-[var(--ink-secondary)] max-w-md leading-relaxed">
+              An open-source news acquisition engine, SpecPack v0.2 editorial contract, and daily AI &amp; developer-tools broadsheet published automatically after verified readback.
+            </p>
+            <p class="font-mono-telemetry text-[11px] text-[var(--ink-muted)]">
+              Latest edition: <a href={`/issues/${latestDate}/`} class="link-editorial">{latestDate}</a> · MIT Licensed Engine
+            </p>
+          </div>
+
+          <div class="md:col-span-3 space-y-2">
+            <div class="font-mono-telemetry text-[10px] uppercase tracking-[0.1em] text-[var(--ink-muted)]">
+              Publication
+            </div>
+            <ul class="space-y-1.5 text-sm">
+              <li><a href="/" class="link-editorial">Today's Front Page</a></li>
+              <li><a href="/archive/" class="link-editorial">Full Archive ({allEditions.length} Issues)</a></li>
+              <li><a href="/how-it-works/" class="link-editorial">Architecture &amp; SpecPack</a></li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-3 space-y-2">
+            <div class="font-mono-telemetry text-[10px] uppercase tracking-[0.1em] text-[var(--ink-muted)]">
+              Feeds &amp; Source
+            </div>
+            <ul class="space-y-1.5 text-sm">
+              <li><a href="/rss.xml" class="link-editorial">RSS 2.0 Feed</a></li>
+              <li><a href="/feed.json" class="link-editorial">JSON Feed 1.1</a></li>
+              <li><a href="/llms.txt" class="link-editorial">Agent Index (/llms.txt)</a></li>
+              <li>
+                <a
+                  href="https://github.com/Popcornnnnnnnn/daily-brief"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="link-editorial"
+                >
+                  Popcornnnnnnnn/daily-brief ↗
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <CommandSearch client:load editions={searchItems} />
+    <MediaLightbox client:load />
+
+    <!-- Progressive enhancements matching modern-web-guidance -->
+    <script is:inline>
+      // 1. Directional cross-document view transitions (cross-document-transitions)
+      window.addEventListener('pagereveal', (e) => {
+        if (!e.viewTransition || !window.navigation?.activation) return;
+        try {
+          const fromPath = new URL(window.navigation.activation.from.url).pathname;
+          const toPath = new URL(window.navigation.activation.entry.url).pathname;
+          const fromMatch = /^\/issues\/(\d{4}-\d{2}-\d{2})\//.exec(fromPath);
+          const toMatch = /^\/issues\/(\d{4}-\d{2}-\d{2})\//.exec(toPath);
+          if (fromMatch && toMatch) {
+            e.viewTransition.types.add(toMatch[1] > fromMatch[1] ? 'next' : 'previous');
+          }
+        } catch {}
+      });
+
+      // 2. Scroll progress fallback when animation-timeline: scroll() is unsupported
+      if (
+        !CSS.supports('animation-timeline', 'scroll()') &&
+        window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+      ) {
+        const progress = document.getElementById('reading-progress');
+        if (progress) {
+          const update = () => {
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            const ratio = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+            progress.style.transform = `scaleX(${ratio})`;
+          };
+          window.addEventListener('scroll', update, { passive: true });
+          update();
+        }
+      }
+
+      // 3. Scroll-entry fallback when view() + animation-range is unsupported
+      if (
+        !CSS.supports('(animation-timeline: view()) and (animation-range: entry)') &&
+        window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+      ) {
+        const targets = document.querySelectorAll('.reveal-card');
+        if (targets.length && 'IntersectionObserver' in window) {
+          const obs = new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                if (entry.isIntersecting) {
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'none';
+                  obs.unobserve(entry.target);
+                }
+              }
+            },
+            { threshold: 0.08 }
+          );
+          targets.forEach((el) => obs.observe(el));
+        }
+      }
+    </script>
+  </body>
+</html>

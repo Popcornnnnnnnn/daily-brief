@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllEditionsSorted } from '../lib/editions';
+
+const editions = await getAllEditionsSorted();
+const totalStories = editions.reduce((sum, e) => sum + e.data.story_count, 0);
+const totalSources = editions.reduce((sum, e) => sum + e.data.source_count, 0);
+
+const stages = [
+  {
+    num: '01',
+    title: 'Zero-Dep Collectors',
+    subtitle: 'Python stdlib + gh',
+    detail:
+      'Tech & AI and Open-Source collectors crawl RSS/Atom feeds, arXiv OAI-PMH, CISA KEV, GitHub Advisories, Trending snapshots, and watched repos into raw gzipped evidence and SQLite.',
+  },
+  {
+    num: '02',
+    title: 'Pinned Partitions',
+    subtitle: '≤ 25 items · ≤ 22 KB',
+    detail:
+      'Outputs split into SHA-256 verified, round-robin interleaved partitions. Editorial agents pin one exact 40-char commit SHA so inputs never shift mid-run.',
+  },
+  {
+    num: '03',
+    title: 'Two-Pass Verification',
+    subtitle: 'Original dates & limits',
+    detail:
+      'Every candidate is verified back to primary release tags, commits, or papers. Discovery clocks and sitemap lastmod dates never masquerade as publication timestamps.',
+  },
+  {
+    num: '04',
+    title: 'Immutable Receipts',
+    subtitle: 'Readback + holdout gate',
+    detail:
+      'Runs emit append-only decision receipts (including explicit unreviewed counts) and require independent readback verification plus 20 untouched holdout examples before tuning ranking.',
+  },
+  {
+    num: '05',
+    title: 'Privacy Gate & Web',
+    subtitle: 'Static broadsheet build',
+    detail:
+      'An allowlist exporter converts public editions to Markdown, localizes expiring media, fails closed on any private identifier, and builds static HTML, RSS, JSON Feed, and llms.txt.',
+  },
+];
+
+const invariants = [
+  {
+    id: '[1.1]',
+    name: 'Commit-Pinned Partitions',
+    desc: 'Read manifests and partitions at one full Git commit SHA; interleave sources fairly inside bounded files.',
+  },
+  {
+    id: '[1.2]',
+    name: 'Explicit Unreviewed Counts',
+    desc: 'Never hide unread candidates as "rejected"—record exact unreviewed counts alongside candidate denominators.',
+  },
+  {
+    id: '[2.1]',
+    name: 'Temporal Truthfulness',
+    desc: 'Separate fixed-window original publication dates from discovery snapshots and labeled retrospective catch-ups.',
+  },
+  {
+    id: '[2.2]',
+    name: 'Honest Upstream Gaps',
+    desc: 'Timeouts, HTTP errors, paywalls, and pagination ceilings stay visible in the Coverage Note instead of faking a quiet day.',
+  },
+  {
+    id: '[3.2]',
+    name: 'Verified Readback Proof',
+    desc: 'Delivery counts as verified only after independently reading back body completeness, dates, links, and media.',
+  },
+  {
+    id: '[4.2]',
+    name: '20-Case Holdout Gate',
+    desc: 'Never let one noisy reaction reweight topics; strategy promotions require 20 untouched human-labeled holdout examples.',
+  },
+  {
+    id: '[4.3]',
+    name: 'Zero-Tolerance Privacy Gate',
+    desc: 'Build-blocking scanner guarantees zero private workspaces, tokens, local paths, or unpublished personal sections reach public Git.',
+  },
+];
+---
+
+<BaseLayout
+  title="How It Works & Open-Source Architecture — Daily Brief"
+  description="Inside Daily Brief: zero-dependency Python collectors, commit-pinned partitions, SpecPack v0.2 invariants, and the automated privacy-gated publisher."
+  canonicalPath="/how-it-works/"
+  currentPage="how-it-works"
+>
+  <div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 pt-8 sm:pt-12 pb-12 space-y-16">
+    <!-- Hero Header -->
+    <header class="border-t-2 border-[var(--ink)] pt-6 pb-8 border-b border-[var(--rule)]">
+      <div class="font-mono-telemetry text-[11px] uppercase tracking-[0.14em] text-[var(--vermilion)] font-semibold mb-2">
+        Open-Source Engine + SpecPack v0.2
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+        <div class="lg:col-span-8">
+          <h1 class="font-serif-display text-[clamp(2.35rem,5vw,4.1rem)] font-bold leading-[1.03] tracking-[-0.03em] text-[var(--ink)]">
+            Built to stop hallucinating dates, dropping context, and faking quiet days.
+          </h1>
+        </div>
+        <div class="lg:col-span-4 space-y-3">
+          <p class="text-sm text-[var(--ink-secondary)] leading-relaxed">
+            Most AI digests collapse after a week when feeds time out or a repo dumps 400 commits. Daily Brief open-sources both the zero-dependency collector engine and the SpecPack invariant recipe so anyone can run or rebuild it.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <a
+              href="https://github.com/Popcornnnnnnnn/daily-brief"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3.5 py-2 bg-[var(--ink)] hover:bg-[var(--vermilion)] text-[var(--sheet)] font-mono-telemetry text-xs uppercase tracking-wider rounded-[2px] no-underline transition-colors"
+            >
+              View on GitHub ↗
+            </a>
+            <a
+              href="/archive/"
+              class="px-3.5 py-2 bg-[var(--sheet)] hover:bg-[var(--tint)] border border-[var(--rule)] hover:border-[var(--ink)] text-[var(--ink)] font-mono-telemetry text-xs uppercase tracking-wider rounded-[2px] no-underline transition-colors"
+            >
+              Browse {editions.length} Issues
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aggregate Stats -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-6 border-t border-[var(--rule)]">
+        <div class="bg-[var(--sheet)] border border-[var(--rule)] p-4 rounded-[3px]">
+          <div class="font-mono-telemetry text-2xl font-semibold text-[var(--ink)]">{editions.length}</div>
+          <div class="font-mono-telemetry text-[10px] uppercase tracking-wider text-[var(--ink-muted)] mt-1">Published Editions</div>
+        </div>
+        <div class="bg-[var(--sheet)] border border-[var(--rule)] p-4 rounded-[3px]">
+          <div class="font-mono-telemetry text-2xl font-semibold text-[var(--ink)]">{totalStories.toLocaleString()}</div>
+          <div class="font-mono-telemetry text-[10px] uppercase tracking-wider text-[var(--ink-muted)] mt-1">Verified Stories</div>
+        </div>
+        <div class="bg-[var(--sheet)] border border-[var(--rule)] p-4 rounded-[3px]">
+          <div class="font-mono-telemetry text-2xl font-semibold text-[var(--ink)]">{totalSources.toLocaleString()}</div>
+          <div class="font-mono-telemetry text-[10px] uppercase tracking-wider text-[var(--ink-muted)] mt-1">Primary Citations</div>
+        </div>
+        <div class="bg-[var(--sheet)] border border-[var(--rule)] p-4 rounded-[3px]">
+          <div class="font-mono-telemetry text-2xl font-semibold text-[var(--sage)]">0 deps</div>
+          <div class="font-mono-telemetry text-[10px] uppercase tracking-wider text-[var(--ink-muted)] mt-1">Python Core Stack</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 5-Stage Pipeline Architecture -->
+    <section aria-labelledby="pipeline-heading" class="space-y-6">
+      <div class="flex items-baseline justify-between border-b-2 border-[var(--ink)] pb-2">
+        <h2 id="pipeline-heading" class="font-serif-display text-3xl font-bold tracking-tight text-[var(--ink)]">
+          Five-Stage Pipeline
+        </h2>
+        <span class="font-mono-telemetry text-xs text-[var(--ink-muted)]">Collect → Pin → Verify → Gate → Publish</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        {stages.map((st) => (
+          <div class="border border-[var(--rule)] bg-[var(--sheet)] p-5 rounded-[4px] flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="font-mono-telemetry text-xs font-bold text-[var(--vermilion)]">{st.num}</span>
+                <span class="font-mono-telemetry text-[10px] uppercase tracking-wider text-[var(--ink-muted)]">
+                  {st.subtitle}
+                </span>
+              </div>
+              <h3 class="font-serif-display text-xl font-semibold text-[var(--ink)] mb-2 leading-snug">
+                {st.title}
+              </h3>
+              <p class="text-[0.84rem] text-[var(--ink-secondary)] leading-relaxed">{st.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Core Editorial Invariants (SpecPack v0.2) -->
+    <section aria-labelledby="invariants-heading" class="space-y-6 reveal-card">
+      <div class="flex flex-wrap items-baseline justify-between gap-2 border-b-2 border-[var(--ink)] pb-2">
+        <h2 id="invariants-heading" class="font-serif-display text-3xl font-bold tracking-tight text-[var(--ink)]">
+          Locked Core Invariants (<code class="font-mono-telemetry text-[0.82em] bg-[var(--tint)] px-1.5 py-0.5 rounded-[3px]">specpack/spec.md</code>)
+        </h2>
+        <span class="font-mono-telemetry text-xs text-[var(--ink-muted)]">SpecPack v0.2 · Freedom by Default</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {invariants.map((inv) => (
+          <div class="border border-[var(--rule)] bg-[var(--sheet)] p-5 rounded-[4px] flex gap-4 items-start">
+            <span class="font-mono-telemetry text-xs font-semibold px-2 py-0.5 bg-[var(--vermilion-soft)] text-[var(--vermilion)] border border-[rgba(200,62,43,0.22)] rounded-[2px] shrink-0 mt-0.5">
+              {inv.id}
+            </span>
+            <div>
+              <h3 class="font-serif-display text-lg font-semibold text-[var(--ink)] mb-1">{inv.name}</h3>
+              <p class="text-sm text-[var(--ink-secondary)] leading-relaxed">{inv.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Feeds & Developer/Agent Endpoints -->
+    <section aria-labelledby="endpoints-heading" class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6 border-t-2 border-[var(--ink)] reveal-card">
+      <div class="lg:col-span-5 space-y-3">
+        <div class="font-mono-telemetry text-[11px] uppercase tracking-[0.12em] text-[var(--vermilion)] font-semibold">
+          For Readers &amp; Agents
+        </div>
+        <h2 id="endpoints-heading" class="font-serif-display text-3xl font-bold tracking-tight text-[var(--ink)]">
+          Machine-Readable Endpoints
+        </h2>
+        <p class="text-sm text-[var(--ink-secondary)] leading-relaxed">
+          Every edition is served as clean HTML, raw YAML-frontmattered Markdown, RSS 2.0, JSON Feed 1.1, and an agent discovery manifest at <code>/llms.txt</code>.
+        </p>
+      </div>
+
+      <div class="lg:col-span-7 divide-y divide-[var(--rule)] border border-[var(--rule)] bg-[var(--sheet)] rounded-[4px]">
+        <a href="/rss.xml" class="flex items-center justify-between px-5 py-3.5 hover:bg-[var(--tint)] no-underline transition-colors">
+          <div>
+            <div class="font-mono-telemetry text-sm font-semibold text-[var(--ink)]">/rss.xml</div>
+            <div class="text-xs text-[var(--ink-secondary)]">Full-content RSS 2.0 feed of recent issues</div>
+          </div>
+          <span class="font-mono-telemetry text-xs text-[var(--vermilion)]">XML ↗</span>
+        </a>
+        <a href="/feed.json" class="flex items-center justify-between px-5 py-3.5 hover:bg-[var(--tint)] no-underline transition-colors">
+          <div>
+            <div class="font-mono-telemetry text-sm font-semibold text-[var(--ink)]">/feed.json</div>
+            <div class="text-xs text-[var(--ink-secondary)]">JSON Feed 1.1 with takeaways, tags, and provenance metadata</div>
+          </div>
+          <span class="font-mono-telemetry text-xs text-[var(--vermilion)]">JSON ↗</span>
+        </a>
+        <a href="/llms.txt" class="flex items-center justify-between px-5 py-3.5 hover:bg-[var(--tint)] no-underline transition-colors">
+          <div>
+            <div class="font-mono-telemetry text-sm font-semibold text-[var(--ink)]">/llms.txt</div>
+            <div class="text-xs text-[var(--ink-secondary)]">Structured agent index linking directly to raw Markdown editions</div>
+          </div>
+          <span class="font-mono-telemetry text-xs text-[var(--vermilion)]">TXT ↗</span>
+        </a>
+        <a
+          href={`/editions/${editions[0]?.data.date}.md`}
+          class="flex items-center justify-between px-5 py-3.5 hover:bg-[var(--tint)] no-underline transition-colors"
+        >
+          <div>
+            <div class="font-mono-telemetry text-sm font-semibold text-[var(--ink)]">/editions/YYYY-MM-DD.md</div>
+            <div class="text-xs text-[var(--ink-secondary)]">Clean raw Markdown source for every published day</div>
+          </div>
+          <span class="font-mono-telemetry text-xs text-[var(--vermilion)]">MD ↗</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EditionView from '../../components/EditionView.astro';
+import { formatIssueNo, getAllEditionsSorted } from '../../lib/editions';
+
+export async function getStaticPaths() {
+  const editions = await getAllEditionsSorted();
+  return editions.map((edition, idx) => {
+    const newer = idx > 0 ? editions[idx - 1] : null;
+    const older = idx < editions.length - 1 ? editions[idx + 1] : null;
+    return {
+      params: { date: edition.data.date },
+      props: {
+        edition,
+        prevIssue: older
+          ? { date: older.data.date, issue_number: older.data.issue_number, title: older.data.title }
+          : null,
+        nextIssue: newer
+          ? { date: newer.data.date, issue_number: newer.data.issue_number, title: newer.data.title }
+          : null,
+      },
+    };
+  });
+}
+
+const { edition, prevIssue, nextIssue } = Astro.props;
+const d = edition.data;
+---
+
+<BaseLayout
+  title={`${d.title} — Daily Brief ${formatIssueNo(d.issue_number)}`}
+  description={d.summary}
+  canonicalPath={`/issues/${d.date}/`}
+  currentPage="issue"
+  issueDate={d.date}
+>
+  <EditionView edition={edition} prevIssue={prevIssue} nextIssue={nextIssue} isFrontPage={false} />
+</BaseLayout>

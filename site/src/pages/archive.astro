@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArchiveExplorer from '../components/ArchiveExplorer';
+import { getAllEditionsSorted, toSearchItem } from '../lib/editions';
+
+const editions = await getAllEditionsSorted();
+const items = editions.map(toSearchItem);
+const earliest = editions[editions.length - 1]?.data.date || '';
+const latest = editions[0]?.data.date || '';
+---
+
+<BaseLayout
+  title={`Archive (${editions.length} Issues) — Daily Brief`}
+  description={`Search and browse all ${editions.length} editions of Daily Brief from ${earliest} to ${latest}.`}
+  canonicalPath="/archive/"
+  currentPage="archive"
+>
+  <div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 pt-8 sm:pt-12 pb-10">
+    <header class="border-t-2 border-[var(--ink)] pt-5 pb-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="font-mono-telemetry text-[11px] uppercase tracking-[0.14em] text-[var(--vermilion)] font-semibold mb-1.5">
+            Complete Broadsheet Ledger · {earliest} to {latest}
+          </div>
+          <h1 class="font-serif-display text-[clamp(2.4rem,5vw,4rem)] font-bold leading-none tracking-[-0.03em] text-[var(--ink)]">
+            Edition Archive
+          </h1>
+        </div>
+        <p class="text-sm text-[var(--ink-secondary)] max-w-md leading-relaxed">
+          Every daily edition exported after privacy-gate verification. Hover or focus any issue to inspect its 90-second summary and provenance before opening.
+        </p>
+      </div>
+    </header>
+
+    <ArchiveExplorer client:load editions={items} />
+  </div>
+</BaseLayout>

@@ -1,0 +1,96 @@
+{
+  "lookback_hours": 72,
+  "export_hours": 48,
+  "request_timeout_seconds": 25,
+  "max_items_per_source": 300,
+  "sources": [
+    {
+      "id": "anthropic",
+      "name": "Anthropic News",
+      "family": "ai-labs",
+      "type": "sitemap",
+      "url": "https://www.anthropic.com/sitemap.xml",
+      "include_prefixes": ["https://www.anthropic.com/news/", "https://www.anthropic.com/research/"]
+    },
+    {
+      "id": "deepmind",
+      "name": "Google DeepMind Blog",
+      "family": "ai-labs",
+      "type": "feed",
+      "url": "https://deepmind.google/blog/rss.xml"
+    },
+    {
+      "id": "hf-blog",
+      "name": "Hugging Face Blog",
+      "family": "ai-labs",
+      "type": "feed",
+      "url": "https://huggingface.co/blog/feed.xml"
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI News",
+      "family": "ai-labs",
+      "type": "feed",
+      "url": "https://openai.com/news/rss.xml"
+    },
+    {
+      "id": "hacker-news",
+      "name": "Hacker News",
+      "family": "community",
+      "type": "hn",
+      "url": "https://hn.algolia.com/api/v1/search"
+    },
+    {
+      "id": "lobsters",
+      "name": "Lobsters",
+      "family": "community",
+      "type": "feed",
+      "url": "https://lobste.rs/rss"
+    },
+    {
+      "id": "lwn",
+      "name": "LWN.net",
+      "family": "engineering",
+      "type": "feed",
+      "url": "https://lwn.net/headlines/rss"
+    },
+    {
+      "id": "simon-willison",
+      "name": "Simon Willison",
+      "family": "engineering",
+      "type": "feed",
+      "url": "https://simonwillison.net/atom/everything/"
+    },
+    {
+      "id": "arxiv-cs",
+      "name": "arXiv CS (AI/CL/LG/SE/CR/HC)",
+      "family": "research",
+      "type": "arxiv_oai",
+      "url": "https://export.arxiv.org/oai2"
+    },
+    {
+      "id": "hf-daily-papers",
+      "name": "Hugging Face Daily Papers",
+      "family": "research",
+      "type": "hf_daily",
+      "url": "https://huggingface.co/api/daily_papers"
+    },
+    {
+      "id": "cisa-kev",
+      "name": "CISA Known Exploited Vulnerabilities",
+      "family": "security",
+      "type": "cisa_kev",
+      "urls": [
+        "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+        "https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json"
+      ]
+    },
+    {
+      "id": "github-advisories",
+      "name": "GitHub Security Advisories",
+      "family": "security",
+      "type": "github_advisories",
+      "url": "https://api.github.com/advisories"
+    }
+  ]
+}

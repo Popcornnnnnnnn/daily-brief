@@ -1,0 +1,14 @@
+# Daily Brief — Action Radar Prompt Template (Sanitized)
+
+Use this template for a follow-up sweep ~2 hours after the main brief (e.g. `06:15 <YOUR_TIMEZONE>`) to catch late-breaking GitHub releases, security advisories, or high-signal repositories that landed overnight without creating a duplicate edition.
+
+---
+
+1. Read today's already-published edition from `<YOUR_DESTINATION>` and today's main editorial receipt (`brief-workflow/records/YYYY-MM-DD/daily_*.json`).
+2. Inspect fresh collector partitions at the latest pinned `main` commit of `<YOUR_STATE_REPO>` plus direct GitHub/advisory verification for high-priority watched repositories and security feeds.
+3. Add **only** net-new, verified material updates that were absent from the morning brief:
+   - Major developer CLI / agent runtime / SDK releases with concrete capability or permission changes.
+   - Critical security advisories affecting actively tracked ecosystems.
+   - High-signal open-source developer tools verified directly against primary repositories.
+4. Merge new items into today's existing edition in place without altering unrelated sections or removing morning coverage.
+5. Record a separate `radar_*` receipt linking checked candidates and verify the updated edition via independent readback.
