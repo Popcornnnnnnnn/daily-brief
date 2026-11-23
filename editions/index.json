@@ -1,5 +1,43 @@
 [
   {
+    "issue_number": 52,
+    "date": "2026-11-24",
+    "title": "Upload2Shell, Cryptanalysis and Haptic macOS Tools",
+    "window": "Asia/Shanghai [2026-11-23 04:00, 2026-11-24 04:00). Project discovery looks back seven days, with a fourteen-day catch-up when needed.",
+    "summary": "Upload2Shell turns ordinary document and image pipelines into a patch-now problem. A Ghostscript Type 1 font use-after-free can bypass -dSAFER and reach command execution through systems that call Ghostscript indirectly, including upload previews, thumbnail...",
+    "takeaways": [
+      "Upload2Shell turns ordinary document and image pipelines into a patch-now problem. A Ghostscript Type 1 font use-after-free can bypass -dSAFER and reach command execution through systems that call Ghostscript indirectly, including upload previews, thumbnails, printing and email rendering. Ghostscript 10.08.0 fixes the root issue; distribution backports and product-specific fixes still need to be checked rather than inferred from a version string.",
+      "MiniMax published a strong—but still vendor-authored—case for automated cryptanalysis. Its internal MIM model reportedly produced executable attacks and implementation findings across historical NIST candidates and peer-reviewed schemes. The artifacts are public, and a Blender-related artifact was corrected on November 23; that correction is a useful reminder that independent cryptographic review still matters.",
+      "Developer-side experiments are unusually tactile this week. os6/nospeaker makes a Mac Force Touch trackpad “speak” through haptics and grew from 413 stars in the November 23 collector snapshot to 1,299 by the cutoff check. Adhishtanaka/thir is a tiny Rust userspace that boots on a Linux kernel and presents a pane-based desktop with confirmation-gated AI commands."
+    ],
+    "sections": [
+      "Today in 90 seconds",
+      "Tech & AI",
+      "Open source & developer tools",
+      "Business opportunity",
+      "Coverage notes"
+    ],
+    "tags": [
+      "Security & CVEs",
+      "Systems & Infra"
+    ],
+    "lead_image": {
+      "src": "https://raw.githubusercontent.com/Adhishtanaka/thir/master/docs/thir.gif",
+      "alt": "Official thir interface demo. Source: project repository."
+    },
+    "story_count": 6,
+    "source_count": 13,
+    "reading_time_min": 5,
+    "provenance": {
+      "candidates": 2554,
+      "unreviewed": 2552,
+      "revision": "136d727",
+      "verified": true,
+      "coverage_complete": null,
+      "source_gap_count": 0
+    }
+  },
+  {
     "issue_number": 51,
     "date": "2026-11-23",
     "title": "Perplexity Pacing and Prompt Supply-Chain Leaks",
