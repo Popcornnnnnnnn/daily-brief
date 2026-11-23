@@ -19,15 +19,16 @@
     ],
     "tags": [
       "Security & CVEs",
+      "Agent Systems",
       "Systems & Infra"
     ],
     "lead_image": {
       "src": "https://raw.githubusercontent.com/Adhishtanaka/thir/master/docs/thir.gif",
       "alt": "Official thir interface demo. Source: project repository."
     },
-    "story_count": 6,
-    "source_count": 13,
-    "reading_time_min": 5,
+    "story_count": 8,
+    "source_count": 15,
+    "reading_time_min": 6,
     "provenance": {
       "candidates": 2554,
       "unreviewed": 2552,
