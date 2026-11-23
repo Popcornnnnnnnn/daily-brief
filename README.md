@@ -2,7 +2,7 @@
 
 > An open-source, zero-dependency news acquisition engine, editorial contract (**SpecPack v0.2**), and Swiss broadsheet publication for daily AI, security, and open-source developer tools.
 
-**Live site:** [popcornnn.xyz](https://popcornnn.xyz) · [Archive](https://popcornnn.xyz/archive/) · [RSS](https://popcornnn.xyz/rss.xml) · [JSON Feed](https://popcornnn.xyz/feed.json) · [llms.txt](https://popcornnn.xyz/llms.txt)
+**Live site:** [brief.popcornnn.xyz](https://brief.popcornnn.xyz) · [Archive](https://brief.popcornnn.xyz/archive/) · [RSS](https://brief.popcornnn.xyz/rss.xml) · [JSON Feed](https://brief.popcornnn.xyz/feed.json) · [llms.txt](https://brief.popcornnn.xyz/llms.txt)
 
 Most AI brief tools break in the same predictable ways: they trust `sitemap.xml` `<lastmod>` dates, silently overflow context when a repo has 400 commits, mistake feed timeouts for quiet news days, or overfit to a single thumbs-up. **Daily Brief** packages the boring engineering guardrails that fix those failures alongside the editorial website where the finished issues live.
 
