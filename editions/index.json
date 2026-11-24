@@ -12,17 +12,20 @@
       "Today’s three takeaways",
       "Tech & AI",
       "Open source and developer tools",
+      "Action radar",
       "Business opportunities",
       "Sources worth opening"
     ],
     "tags": [
+      "Frontier Models",
       "Security & CVEs",
-      "Agent Systems"
+      "Agent Systems",
+      "Business & Policy"
     ],
     "lead_image": null,
-    "story_count": 10,
-    "source_count": 10,
-    "reading_time_min": 7,
+    "story_count": 13,
+    "source_count": 13,
+    "reading_time_min": 9,
     "provenance": {
       "candidates": 2554,
       "unreviewed": 2554,
