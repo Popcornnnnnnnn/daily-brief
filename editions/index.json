@@ -1,5 +1,38 @@
 [
   {
+    "issue_number": 53,
+    "date": "2026-11-25",
+    "title": "Agentic Attacks, Exoplanet Search and Live Shields",
+    "window": "Asia/Shanghai [2026-11-24 04:00, 2026-11-25 04:00)",
+    "summary": "Daily AI & Developer Brief — November 25, 2026",
+    "takeaways": [
+      "Daily AI & Developer Brief — November 25, 2026"
+    ],
+    "sections": [
+      "Today’s three takeaways",
+      "Tech & AI",
+      "Open source and developer tools",
+      "Business opportunities",
+      "Sources worth opening"
+    ],
+    "tags": [
+      "Security & CVEs",
+      "Agent Systems"
+    ],
+    "lead_image": null,
+    "story_count": 10,
+    "source_count": 10,
+    "reading_time_min": 7,
+    "provenance": {
+      "candidates": 2554,
+      "unreviewed": 2554,
+      "revision": "f78c71b",
+      "verified": true,
+      "coverage_complete": null,
+      "source_gap_count": 0
+    }
+  },
+  {
     "issue_number": 52,
     "date": "2026-11-24",
     "title": "Upload2Shell, Cryptanalysis and Haptic macOS Tools",
