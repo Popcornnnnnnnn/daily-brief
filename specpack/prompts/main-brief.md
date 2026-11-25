@@ -25,8 +25,12 @@ Generate today's **Daily AI & Developer Brief** at `04:00 <YOUR_TIMEZONE>`.
 - Link primary sources beside every factual claim (official engineering blog, release tag, security advisory, arXiv paper). State limits, alpha maturity, and self-reported benchmarks explicitly.
 - Preserve genuine upstream source gaps (timeouts, HTTP errors, paywalls, pagination limits) in a concise `# Coverage note` at the end.
 
-## Step 3 — Structure & Restraint
+## Step 3 — Structure, Readability & Restraint
 
+- Keep reading layout centered (disable full-width page modes) and use consistent `##` section headings and `###` story headings.
+- Use plain inline Markdown source links beside claims, plus verified real screenshots, diagrams, or GIFs when they clarify a story; avoid un-unfurled bookmark cards or inline PDF embeds.
+- Per-story scannable rhythm: open with a 1-sentence plain-English lead (introduce unfamiliar tools and jargon first), keep sentences short (~12–18 words), break lists of 3+ items into bullets, keep paragraphs to 2–3 sentences, bold key points, and end with a bold **Why it matters** or **What to do** takeaway.
+- Keep catch-up publication dates concise (e.g., *Published YYYY-MM-DD*) and put collector or source gaps in `# Coverage note` at the end—never put audit-justification prose inside story openings.
 - `# Today in 90 seconds`: 3–4 crisp bullets capturing the day's biggest shifts.
 - `# Tech & AI`: model releases, research, engineering postmortems, infrastructure, security advisories.
 - `# Open Source & Developer Tools`: notable releases, Trending / Show HN discoveries (with verification of README, commits, and limits), and catch-up items.

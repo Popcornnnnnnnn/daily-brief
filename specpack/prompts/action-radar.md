@@ -10,5 +10,5 @@ Use this template for a follow-up sweep ~2 hours after the main brief (e.g. `06:
    - Major developer CLI / agent runtime / SDK releases with concrete capability or permission changes.
    - Critical security advisories affecting actively tracked ecosystems.
    - High-signal open-source developer tools verified directly against primary repositories.
-4. Merge new items into today's existing edition in place without altering unrelated sections or removing morning coverage.
+4. Merge new items into today's existing edition in place without altering unrelated sections, changing centered page width, or removing morning coverage. Follow the same readability rules: `###` item headings, 1-sentence plain-English leads before jargon, short sentences (~12–18 words), bullets for 3+ items, bold **Why it matters** / **What to do** takeaways, and plain inline source links (no bookmark cards or PDF embeds).
 5. Record a separate `radar_*` receipt linking checked candidates and verify the updated edition via independent readback.
