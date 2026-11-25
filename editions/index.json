@@ -3,7 +3,7 @@
     "issue_number": 53,
     "date": "2026-11-25",
     "title": "Agentic Attacks, Exoplanet Search and Live Shields",
-    "window": "Asia/Shanghai [2026-11-24 04:00, 2026-11-25 04:00)",
+    "window": "Asia/Shanghai [2026-11-24 04:00, 2026-11-25 04:00) · Project discovery: past 7 days (14-day catch-up where useful).",
     "summary": "Daily AI & Developer Brief — November 25, 2026",
     "takeaways": [
       "Daily AI & Developer Brief — November 25, 2026"
@@ -14,18 +14,19 @@
       "Open source and developer tools",
       "Action radar",
       "Business opportunities",
-      "Sources worth opening"
+      "Sources worth opening",
+      "Coverage note"
     ],
     "tags": [
       "Frontier Models",
       "Security & CVEs",
       "Agent Systems",
-      "Business & Policy"
+      "Systems & Infra"
     ],
     "lead_image": null,
-    "story_count": 13,
-    "source_count": 13,
-    "reading_time_min": 9,
+    "story_count": 12,
+    "source_count": 12,
+    "reading_time_min": 7,
     "provenance": {
       "candidates": 2554,
       "unreviewed": 2554,
