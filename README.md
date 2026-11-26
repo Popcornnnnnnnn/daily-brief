@@ -1,5 +1,7 @@
 # Daily Brief
 
+**English** · [简体中文](README.zh-CN.md)
+
 > An open-source, zero-dependency news acquisition engine, editorial contract (**SpecPack v0.2**), and Swiss broadsheet publication for daily AI, security, and open-source developer tools.
 
 **Live site:** [brief.popcornnn.xyz](https://brief.popcornnn.xyz) · [Archive](https://brief.popcornnn.xyz/archive/) · [RSS](https://brief.popcornnn.xyz/rss.xml) · [JSON Feed](https://brief.popcornnn.xyz/feed.json) · [llms.txt](https://brief.popcornnn.xyz/llms.txt)
