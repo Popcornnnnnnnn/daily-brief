@@ -29,9 +29,9 @@
       "src": "https://raw.githubusercontent.com/michidk/sidebyside/c0c25fcde52b41d4ba8ad5d29680011aa39760ff/docs/assets/screenshot.webp",
       "alt": "Side by Side showing Firefox, Chromium, and Epiphany in adjacent panes."
     },
-    "story_count": 11,
-    "source_count": 18,
-    "reading_time_min": 5,
+    "story_count": 12,
+    "source_count": 19,
+    "reading_time_min": 6,
     "provenance": {
       "candidates": 5830,
       "unreviewed": 5814,
@@ -72,9 +72,9 @@
       "src": "https://assets.claude.com/3a4d129ebad6ab2c1188fe6cd02dbc34c2a06e5b.png",
       "alt": "Anthropic's three verification loops: inner sandbox loop, outer shadowed-traffic loop, and memory loop."
     },
-    "story_count": 14,
-    "source_count": 23,
-    "reading_time_min": 10,
+    "story_count": 17,
+    "source_count": 26,
+    "reading_time_min": 11,
     "provenance": {
       "candidates": 4760,
       "unreviewed": 4745,
