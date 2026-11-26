@@ -1,5 +1,90 @@
 [
   {
+    "issue_number": 55,
+    "date": "2026-11-27",
+    "title": "Codex Quotas, Workspace Agent Controls and llama.cpp 1.1",
+    "window": "Asia/Shanghai [previous day 04:00, 2026-11-27 04:00)",
+    "summary": "GPT-6.2 quota use went up for most Codex users after OpenAI fixed a launch accounting error.",
+    "takeaways": [
+      "GPT-6.2 quota use went up for most Codex users after OpenAI fixed a launch accounting error.",
+      "Google Workspace is changing how external agents connect. Its managed interfaces are now generally available, with enforcement scheduled for February 2027.",
+      "llama.cpp 1.1.0 adds named tool selection and size-targeted model compression for local deployments.",
+      "Patch exposed GeoServer instances and review saved OpenCode web permissions. The new OpenCode release scopes fresh approvals to a site."
+    ],
+    "sections": [
+      "Today in 90 seconds",
+      "Tech & AI",
+      "Open source and developer tools",
+      "Action radar",
+      "Sources worth opening",
+      "Coverage note"
+    ],
+    "tags": [
+      "Frontier Models",
+      "Security & CVEs",
+      "Agent Systems",
+      "Systems & Infra"
+    ],
+    "lead_image": {
+      "src": "https://raw.githubusercontent.com/michidk/sidebyside/c0c25fcde52b41d4ba8ad5d29680011aa39760ff/docs/assets/screenshot.webp",
+      "alt": "Side by Side showing Firefox, Chromium, and Epiphany in adjacent panes."
+    },
+    "story_count": 11,
+    "source_count": 18,
+    "reading_time_min": 5,
+    "provenance": {
+      "candidates": 5830,
+      "unreviewed": 5814,
+      "revision": "d272da7",
+      "verified": true,
+      "coverage_complete": null,
+      "source_gap_count": 0
+    }
+  },
+  {
+    "issue_number": 54,
+    "date": "2026-11-26",
+    "title": "Anthropic Rust Migration, 1Password Breach and Agent Hooks",
+    "window": "Asia/Shanghai [2026-11-25 04:00, 2026-11-26 04:00) · Project discovery: past 7 days (14-day catch-up where useful).",
+    "summary": "Anthropic rewrote its Python Messages API in Rust using live production traffic as the oracle. Early builds passed 98% of integration tests while matching only ~25% of live requests; privacy-preserving shadow fingerprinting lifted parity to 99.6%, cutting C...",
+    "takeaways": [
+      "Anthropic rewrote its Python Messages API in Rust using live production traffic as the oracle. Early builds passed 98% of integration tests while matching only ~25% of live requests; privacy-preserving shadow fingerprinting lifted parity to 99.6%, cutting CPU use by ~70% and median time to first token by ~20%.",
+      "1Password disclosed a backend breach traced to a hijacked employee GitHub account. Customer vaults, master passwords, and Secret Keys stayed encrypted and untouched, while names, emails, non-secret metadata, and some email provisioning tokens for a subset of users were copied.",
+      "SpaceX won FCC approval for up to 1 million orbital data-center satellites, while AI labs dropped unreviewed math preprints. SpaceX’s “Starmind” license spans milestones through 2040, and both OpenAI (openai/math) and Anthropic (anthropics/formal-math) posted AI-authored complexity proofs that still await human review.",
+      "Developer action items: Claude Code v2.1.332 adds MCP skills and a PreSkillShellCommand load-time security hook, OpenClaw v2026.11.10 isolates browser settings and blocks .env Azure credential hijacks, and Pi v1.6.1 replaces showCacheMissNotices with granular notice settings."
+    ],
+    "sections": [
+      "Today in 90 seconds",
+      "Tech & AI",
+      "Open source and developer tools",
+      "Action radar",
+      "Business opportunities",
+      "Sources worth opening",
+      "Coverage note"
+    ],
+    "tags": [
+      "Frontier Models",
+      "Security & CVEs",
+      "Agent Systems",
+      "Systems & Infra"
+    ],
+    "lead_image": {
+      "src": "https://assets.claude.com/3a4d129ebad6ab2c1188fe6cd02dbc34c2a06e5b.png",
+      "alt": "Anthropic's three verification loops: inner sandbox loop, outer shadowed-traffic loop, and memory loop."
+    },
+    "story_count": 14,
+    "source_count": 23,
+    "reading_time_min": 10,
+    "provenance": {
+      "candidates": 4760,
+      "unreviewed": 4745,
+      "revision": "8d8d8bf",
+      "verified": true,
+      "coverage_complete": null,
+      "source_gap_count": 0
+    }
+  },
+  {
     "issue_number": 53,
     "date": "2026-11-25",
     "title": "Agentic Attacks, Exoplanet Search and Live Shields",
