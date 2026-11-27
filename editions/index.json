@@ -1,5 +1,46 @@
 [
   {
+    "issue_number": 56,
+    "date": "2026-11-28",
+    "title": "Trainium Video, Claude Desktop Apps and Agent Permissions",
+    "window": "Asia/Shanghai [previous day 04:00, 2026-11-28 04:00)",
+    "summary": "Hugging Face generated a 10-second video with sound in 22–23 seconds on AWS Trainium3 after loading the model.",
+    "takeaways": [
+      "Hugging Face generated a 10-second video with sound in 22–23 seconds on AWS Trainium3 after loading the model.",
+      "Claude’s desktop beta lets you install an interactive artifact as a Mac or Windows app. Your permission applies to one version.",
+      "Ladybird’s rolling alpha adds memory controls for background tabs. Web teams can test against its independent browser engine.",
+      "Patch exposed Drupal sites and check for signs of compromise. Copilot CLI and Pi also shipped changes worth testing before unattended use."
+    ],
+    "sections": [
+      "Today in 90 seconds",
+      "Tech & AI",
+      "Open source and developer tools",
+      "Action radar",
+      "Sources worth opening",
+      "Coverage note"
+    ],
+    "tags": [
+      "Frontier Models",
+      "Security & CVEs",
+      "Agent Systems"
+    ],
+    "lead_image": {
+      "src": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/video-trainium3/parallelism-layout.svg",
+      "alt": "Hugging Face split the clip into eight stretches, with four accelerator cores per stretch."
+    },
+    "story_count": 9,
+    "source_count": 19,
+    "reading_time_min": 4,
+    "provenance": {
+      "candidates": 3901,
+      "unreviewed": 3891,
+      "revision": "e9ad5ff",
+      "verified": true,
+      "coverage_complete": null,
+      "source_gap_count": 0
+    }
+  },
+  {
     "issue_number": 55,
     "date": "2026-11-27",
     "title": "Codex Quotas, Workspace Agent Controls and llama.cpp 1.1",
@@ -26,11 +67,11 @@
       "Systems & Infra"
     ],
     "lead_image": {
-      "src": "https://raw.githubusercontent.com/michidk/sidebyside/c0c25fcde52b41d4ba8ad5d29680011aa39760ff/docs/assets/screenshot.webp",
-      "alt": "Side by Side showing Firefox, Chromium, and Epiphany in adjacent panes."
+      "src": "https://huggingface.co/buckets/huggingface/training-swarms-blog-assets/resolve/part-1/task-and-training-loop.png",
+      "alt": "Hugging Face’s training diagram shows how four agents share a model, receive separate inputs, and exchange messages."
     },
     "story_count": 12,
-    "source_count": 19,
+    "source_count": 20,
     "reading_time_min": 6,
     "provenance": {
       "candidates": 5830,
