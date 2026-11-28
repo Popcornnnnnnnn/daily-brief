@@ -30,10 +30,11 @@ Generate today's **Daily AI & Developer Brief** at `04:00 <YOUR_TIMEZONE>`.
 - Keep reading layout centered (disable full-width page modes) and use consistent `##` section headings and `###` story headings.
 - Use plain inline Markdown source links beside claims, plus verified real screenshots, diagrams, or GIFs when they clarify a story; avoid un-unfurled bookmark cards or inline PDF embeds.
 - Per-story scannable rhythm: open with a 1-sentence plain-English lead (introduce unfamiliar tools and jargon first), keep sentences short (~12–18 words), break lists of 3+ items into bullets, keep paragraphs to 2–3 sentences, bold key points, and end with a bold **Why it matters** or **What to do** takeaway.
+- Filter out routine releases, small fixes, setting renames, and minor incremental tweaks for coding agents and agent harnesses unless there is a genuinely major improvement or critical security issue.
 - Keep catch-up publication dates concise (e.g., *Published YYYY-MM-DD*) and put collector or source gaps in `# Coverage note` at the end—never put audit-justification prose inside story openings.
 - `# Today in 90 seconds`: 3–4 crisp bullets capturing the day's biggest shifts.
 - `# Tech & AI`: model releases, research, engineering postmortems, infrastructure, security advisories.
-- `# Open Source & Developer Tools`: notable releases, Trending / Show HN discoveries (with verification of README, commits, and limits), and catch-up items.
+- `# Open Source & Developer Tools` (optional): notable releases, Trending / Show HN discoveries (with verification of README, commits, and limits), and catch-up items — omit this section (and any Action Radar section) cleanly when nothing genuinely interesting qualifies rather than padding with minor fixes or routine churn.
 - `# Business Opportunities` (optional): 1–2 concrete product hypotheses grounded strictly in today's cited evidence, including validation steps and primary risk.
 - `# Worth opening`: curated short list of primary links.
 - `# Coverage note`: exact collector/discovery coverage limits.
